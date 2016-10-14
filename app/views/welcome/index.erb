@@ -1,53 +1,29 @@
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="<%= asset_path('lang-logo.png') %>">
-    </a>
-    <h1>Getting Started with Ruby on Heroku</h1>
-    <p>This is a sample Ruby application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-ruby"><span class="glyphicon glyphicon-flash"></span> Getting Started with Ruby</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/ruby-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby" class="alert-link">Getting Started with Ruby on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/ruby-getting-started">Heroku Button</a> on the repository.</li>
+<h1>Tokimon</h1>
+<h2><%= link_to 'Trainers', trainers_url%></h2>
+<h2><%= link_to 'Tokidex', tokimons_url%></h2>
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/ruby-getting-started/blob/master/Gemfile">Gemfile</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/ruby-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd ruby-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-ruby#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-ruby">Getting Started with Ruby on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/deploying-ruby-and-rails">Deploying Ruby Apps on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-jruby">Getting Started with Ruby on Heroku (Microsoft Windows)</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
-</div>
+<!--
+p1 = Trainer.new("name"=>"Erca", "description"=>"Some random cat person devoted to playing this game.")
+p2 = Trainer.new("name"=>"Steve", "description"=>"That chemist guy with the glasses. He's the best there is.")
+p3 = Trainer.new("name"=>"Anne", "description"=>"A random girl that plays the game too competetively.")
+p4 = Trainer.new("name"=>"Tikee", "description"=>"A guy who doesn't care about Tokimon, but plays anyway.")
+p5 = Trainer.new("name"=>"Johnny", "description"=>"He sucks at this game, but he has WILLPOWER!")
+
+t1 = Tokimon.new("name"=>"Catmon", "description"=>"The cattest of mons", "weight"=>90, "height"=>110, "fly"=>40, "fight"=>60, "fire"=>20, "water"=>30, "electric"=>40, "ice"=>20)
+t2 = Tokimon.new("name"=>"BetterThanDragonite", "description"=>"It's better than Dragonite in every way, also better than Salamence too!", "weight"=>300, "height"=>270, "fly"=>90, "fight"=>80, "fire"=>90, "water"=>70, "electric"=>70, "ice"=>40)
+t3 = Tokimon.new("name"=>"Rei-qwazza", "description"=>"The legendary Tokimon! It moves mountains with one finger", "weight"=>250, "height"=>600, "fly"=>100, "fight"=>50, "fire"=>100, "water"=>90, "electric"=>90, "ice"=>70)
+t4 = Tokimon.new("name"=>"CopyGuy", "description"=>"Copies any Tokimon, like a kid copying off answers from a test, 'cause it has no real abilities of it's own", "weight"=>10, "height"=>30, "fly"=>20, "fight"=>10, "fire"=>25, "water"=>25, "electric"=>25, "ice"=>25)
+t5 = Tokimon.new("name"=>"Chair", "description"=>"A tool designed for people to sit on", "weight"=>60, "height"=>60, "fly"=>50, "fight"=>30, "fire"=>30, "water"=>40, "electric"=>40, "ice"=>50)
+t6 = Tokimon.new("name"=>"RhyOh", "description"=>"A rhyno that runs around and stuff", "weight"=>300, "height"=>200, "fly"=>10, "fight"=>40, "fire"=>15, "water"=>15, "electric"=>20, "ice"=>10)
+t7 = Tokimon.new("name"=>"RhyNo", "description"=>"A rhyno that runs faster than RhyOh", "weight"=>400, "height"=>250, "fly"=>15, "fight"=>60, "fire"=>35, "water"=>25, "electric"=>35, "ice"=>30)
+t8 = Tokimon.new("name"=>"RhyOhNo", "description"=>"the king of rhynos", "weight"=>450, "height"=>350, "fly"=>20, "fight"=>85, "fire"=>50, "water"=>40, "electric"=>50, "ice"=>60)
+t9 = Tokimon.new("name"=>"EeveeEon", "description"=>"A creature prone to different evolutions", "weight"=>50, "height"=>40, "fly"=>40, "fight"=>40, "fire"=>10, "water"=>10, "electric"=>5, "ice"=>5)
+t10 = Tokimon.new("name"=>"SuperEevee", "description"=>"Like EeveeEon, but supered", "weight"=>40, "height"=>80, "fly"=>65, "fight"=>65, "fire"=>40, "water"=>90, "electric"=>40, "ice"=>40)
+t11 = Tokimon.new("name"=>"SuperEon", "description"=>"An EeveeEon that's become one with the ion", "weight"=>80, "height"=>40, "fly"=>75, "fight"=>75, "fire"=>90, "water"=>40, "electric"=>30, "ice"=>30)
+t12 = Tokimon.new("name"=>"AntiEeveeEon", "description"=>"The evil EeveeEon that tries it's best to deceive", "weight"=>60, "height"=>60, "fly"=>35, "fight"=>35, "fire"=>55, "water"=>55, "electric"=>80, "ice"=>80)
+t13 = Tokimon.new("name"=>"Mega Mewtwo Z", "description"=>"Mewtwo's third form! Mega Mewtwo X and Y don't stand a chance!1!1", "weight"=>70, "height"=>180, "fly"=>75, "fight"=>85, "fire"=>100, "water"=>90, "electric"=>100, "ice"=>90)
+t14 = Tokimon.new("name"=>"Godmon", "description"=>"Created the universe with 2^100 arms", "weight"=>300, "height"=>300, "fly"=>100, "fight"=>100, "fire"=>100, "water"=>100, "electric"=>100, "ice"=>100)
+t15 = Tokimon.new("name"=>"", "description"=>"", "weight"=>, "height"=>, "fly"=>, "fight"=>, "fire"=>, "water"=>, "electric"=>, "ice"=>)
+t16 = Tokimon.new("name"=>"", "description"=>"", "weight"=>, "height"=>, "fly"=>, "fight"=>, "fire"=>, "water"=>, "electric"=>, "ice"=>)
+t17 = Tokimon.new("name"=>"", "description"=>"", "weight"=>, "height"=>, "fly"=>, "fight"=>, "fire"=>, "water"=>, "electric"=>, "ice"=>)
+-->

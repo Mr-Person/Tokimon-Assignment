@@ -15,5 +15,10 @@
   <%= @trainer.level %>
 </p>
 
+<p>
+  <strong>Tokimons:</strong>
+  <%= @trainer.tokimons.all%>
+</p>
+
 <%= link_to 'Edit', edit_trainer_path(@trainer) %> |
 <%= link_to 'Back', trainers_path %>

@@ -12,6 +12,7 @@ one:
   electric: 1
   ice: 1
   total: 1
+  trainer_id: 1
 
 two:
   name: MyString
@@ -25,3 +26,4 @@ two:
   electric: 1
   ice: 1
   total: 1
+  trainer_id: 1

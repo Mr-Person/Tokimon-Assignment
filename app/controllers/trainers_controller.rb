@@ -25,7 +25,6 @@ class TrainersController < ApplicationController
   # POST /trainers.json
   def create
     @trainer = Trainer.new(trainer_params)
-
     respond_to do |format|
       if @trainer.save
         format.html { redirect_to @trainer, notice: 'Trainer was successfully created.' }

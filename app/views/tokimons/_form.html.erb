@@ -52,9 +52,10 @@
     <%= f.number_field :ice %>
   </div>
   <div class="field">
-    <%= f.label :total %><br>
-    <%= f.number_field :total %>
+    <%= f.label :trainer_id %><br>
+    <%= collection_select(:tokimon, :trainer_id, Trainer.all, :id, :name, prompt:true) %>
   </div>
+  <br></br>
   <div class="actions">
     <%= f.submit %>
   </div>
