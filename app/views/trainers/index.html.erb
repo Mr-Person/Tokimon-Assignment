@@ -15,9 +15,9 @@
   <tbody>
     <% @trainers.each do |trainer| %>
       <tr>
-        <td><%= trainer.name %></td>
-        <td><%= trainer.description %></td>
-        <td><%= trainer.level %></td>
+        <td class='borderedTD'><%= trainer.name %></td>
+        <td class='borderedTD'><%= trainer.description %></td>
+        <td class='borderedTD'><%= trainer.level %></td>
         <td><%= link_to 'Show', trainer %></td>
         <td><%= link_to 'Edit', edit_trainer_path(trainer) %></td>
         <td><%= link_to 'Delete', trainer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

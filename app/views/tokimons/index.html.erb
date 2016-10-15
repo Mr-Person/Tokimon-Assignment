@@ -2,7 +2,7 @@
 
 <h1>Listing Tokimons</h1>
 
-<table>
+<table id="tokimons">
   <thead>
     <tr>
       <th>Name</th>
@@ -23,8 +23,8 @@
   <tbody>
     <% @tokimons.each do |tokimon| %>
       <tr>
-        <td><%= tokimon.name %></td>
-        <td><%= tokimon.description %></td>
+        <td class='borderedTD'><%= tokimon.name %></td>
+        <td class='borderedTD'><%= tokimon.description %></td>
         <td><%= tokimon.weight %></td>
         <td><%= tokimon.height %></td>
         <td><%= tokimon.fly %></td>

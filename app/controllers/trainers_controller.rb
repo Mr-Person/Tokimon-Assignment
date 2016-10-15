@@ -5,11 +5,15 @@ class TrainersController < ApplicationController
   # GET /trainers.json
   def index
     @trainers = Trainer.all
+    @trainers.each do |trainer|
+      get_level(trainer)
+    end
   end
 
   # GET /trainers/1
   # GET /trainers/1.json
   def show
+    get_level(@trainer)
   end
 
   # GET /trainers/new
@@ -19,6 +23,15 @@ class TrainersController < ApplicationController
 
   # GET /trainers/1/edit
   def edit
+  end
+
+  def get_level(t)
+    count = 0
+    t.level = 1
+    t.tokimons.each do |i|
+      count += 1
+      t.level += 1 if count%3 == 0
+    end
   end
 
   # POST /trainers

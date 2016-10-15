@@ -15,10 +15,44 @@
   <%= @trainer.level %>
 </p>
 
+<br>
 <p>
-  <strong>Tokimons:</strong>
-  <%= @trainer.tokimons.all%>
+  <strong>Tokimons:</strong><br>
+  <% if @trainer.tokimons.size <= 0 %>
+    <i><h4>They have no Tokimons, lol</h4></i>
+  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Weight</th>
+        <th>Height</th>
+        <th>Fly</th>
+        <th>Fight</th>
+        <th>Fire</th>
+        <th>Water</th>
+        <th>Electric</th>
+        <th>Ice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trainer.tokimons.each do |t| %>
+        <tr>
+          <td class='borderedTD'><%= t.name %></td>
+          <td><%= t.weight %></td>
+          <td><%= t.height %></td>
+          <td><%= t.fly %></td>
+          <td><%= t.fight %></td>
+          <td><%= t.fire %></td>
+          <td><%= t.water %></td>
+          <td><%= t.electric %></td>
+          <td><%= t.ice %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>
 
+<br>
 <%= link_to 'Edit', edit_trainer_path(@trainer) %> |
 <%= link_to 'Back', trainers_path %>

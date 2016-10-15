@@ -5,11 +5,15 @@ class TokimonsController < ApplicationController
   # GET /tokimons.json
   def index
     @tokimons = Tokimon.all
+    @tokimons.each do |tokimon|
+      get_total(tokimon)
+    end
   end
 
   # GET /tokimons/1
   # GET /tokimons/1.json
   def show
+    get_total(@tokimon)
   end
 
   # GET /tokimons/new
@@ -21,11 +25,19 @@ class TokimonsController < ApplicationController
   def edit
   end
 
+  def get_total(t)
+    t.total = 0
+    stats = [ t.fly, t.fight, t.fire, t.water, t.electric, t.ice ]
+    stats.each do |i|
+      next if i == nil
+      t.total += i
+    end
+  end
+
   # POST /tokimons
   # POST /tokimons.json
   def create
     @tokimon = Tokimon.new(tokimon_params)
-
     respond_to do |format|
       if @tokimon.save
         format.html { redirect_to @tokimon, notice: 'Tokimon was successfully created.' }

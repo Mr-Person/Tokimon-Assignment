@@ -1,4 +1,5 @@
 body {
+  background-color: #CEE;
   margin-left: 10%;
 }
 
@@ -6,6 +7,11 @@ h1 {
   color: #900;
 }
 
+#tokimons {
+  border: 1px solid black;
+  width: 70%;
+  height: 20%;
+}
 table {
   border: 1px solid black;
   width: 70%;
@@ -18,9 +24,10 @@ th {
 }
 td {
   background-color: #EEE;
-  padding: 1% 5% 1% 1%;
+  text-align: center;
 }
-td:nth-child(1), td:nth-child(2) {
+.borderedTD {
+  text-align: left;
   border: 1px solid black;
   padding: 1% 5% 1% 1%;
 }
