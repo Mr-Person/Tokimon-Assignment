@@ -22,21 +22,23 @@
 
   <tbody>
     <% @tokimons.each do |tokimon| %>
+      <%fy = tokimon.fly%><%ft = tokimon.fight%><%fr = tokimon.fire%>
+      <%wt = tokimon.water%><%el = tokimon.electric%><%ic = tokimon.ice%>
       <tr>
         <td class='borderedTD'><%= tokimon.name %></td>
         <td class='borderedTD'><%= tokimon.description %></td>
-        <td><%= tokimon.weight %></td>
+        <td ><%= tokimon.weight %></td>
         <td><%= tokimon.height %></td>
-        <td><%= tokimon.fly %></td>
-        <td><%= tokimon.fight %></td>
-        <td><%= tokimon.fire %></td>
-        <td><%= tokimon.water %></td>
-        <td><%= tokimon.electric %></td>
-        <td><%= tokimon.ice %></td>
-        <td><%= tokimon.total %></td>
+        <td style="background-color:rgb(<%=fy+110%>,<%=fy+110%>,<%=fy*3+110%>)"><%=fy%></td>
+        <td style="background-color:rgb(<%=ft*2+130%>,<%=ft+130%>,<%=ft+130%>)"><%=ft%></td>
+        <td style="background-color:rgb(<%=fr*2+100%>,<%=fr+130%>,<%=fr+100%>)"><%=fr%></td>
+        <td style="background-color:rgb(<%=wt+100%>,<%=wt+100%>,<%=wt*2+130%>)"><%=wt%></td>
+        <td style="background-color:rgb(<%=el*2+130%>,<%=el*2+130%>,<%=el+130%>)"><%=el%></td>
+        <td style="background-color:rgb(<%=ic+140%>,<%=ic+140%>,<%=ic*2+160%>)"><%=ic%></td>
+        <td style="background-color:rgb(<%=ft+fr+50%>,<%=fy+el+50%>,<%=wt+ic+50%>);font-weight:bold"><%= tokimon.total %></td>
         <td><%= link_to 'Show', tokimon %></td>
         <td><%= link_to 'Edit', edit_tokimon_path(tokimon) %></td>
-        <td><%= link_to 'Destroy', tokimon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', tokimon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

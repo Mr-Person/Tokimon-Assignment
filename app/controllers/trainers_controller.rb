@@ -4,10 +4,8 @@ class TrainersController < ApplicationController
   # GET /trainers
   # GET /trainers.json
   def index
-    @trainers = Trainer.all
-    @trainers.each do |trainer|
-      get_level(trainer)
-    end
+    @trainers = Trainer.order("id")
+    @trainers.each do |trainer| get_level(trainer) end
   end
 
   # GET /trainers/1
@@ -34,10 +32,20 @@ class TrainersController < ApplicationController
     end
   end
 
+  def redo_form(note, delete)
+    @trainer.destroy if delete
+    respond_to do |format|
+      flash.now[:notice] = note
+      format.html { render :new }
+      format.json { render json: @tokimon.errors, status: :unprocessable_entity }
+    end
+  end
+
   # POST /trainers
   # POST /trainers.json
   def create
     @trainer = Trainer.new(trainer_params)
+    return redo_form("Name cannot be blank", true) if @trainer.name.blank?
     respond_to do |format|
       if @trainer.save
         format.html { redirect_to @trainer, notice: 'Trainer was successfully created.' }
@@ -54,6 +62,7 @@ class TrainersController < ApplicationController
   def update
     respond_to do |format|
       if @trainer.update(trainer_params)
+        return redo_form("Name cannot be blank", false) if @trainer.name.blank?
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { render :show, status: :ok, location: @trainer }
       else

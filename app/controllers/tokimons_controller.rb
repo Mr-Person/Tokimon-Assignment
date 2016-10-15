@@ -4,10 +4,8 @@ class TokimonsController < ApplicationController
   # GET /tokimons
   # GET /tokimons.json
   def index
-    @tokimons = Tokimon.all
-    @tokimons.each do |tokimon|
-      get_total(tokimon)
-    end
+    @tokimons = Tokimon.order("id")
+    @tokimons.each do |tokimon| get_total(tokimon) end
   end
 
   # GET /tokimons/1
@@ -26,11 +24,15 @@ class TokimonsController < ApplicationController
   end
 
   def get_total(t)
-    t.total = 0
-    stats = [ t.fly, t.fight, t.fire, t.water, t.electric, t.ice ]
-    stats.each do |i|
-      next if i == nil
-      t.total += i
+    t.total = t.fly + t.fight + t.fire + t.water + t.electric + t.ice
+  end
+
+  def redo_form(note, delete)
+    @tokimon.destroy if delete
+    respond_to do |format|
+      flash.now[:notice] = note
+      format.html { render :new }
+      format.json { render json: @tokimon.errors, status: :unprocessable_entity }
     end
   end
 
@@ -38,6 +40,12 @@ class TokimonsController < ApplicationController
   # POST /tokimons.json
   def create
     @tokimon = Tokimon.new(tokimon_params)
+    list = [@tokimon.weight, @tokimon.height, @tokimon.fly, @tokimon.fight, @tokimon.fire, @tokimon.water, @tokimon.electric, @tokimon.ice]
+    return redo_form("Name cannot be blank", true) if @tokimon.name.blank?
+    for i in 0...list.size
+      return redo_form("All attributes must be filled in", true) if list[i] == nil
+      return redo_form("One or more attributes are out of range", true) if (list[i]>100 && i>=2) || list[i] < 0
+    end
     respond_to do |format|
       if @tokimon.save
         format.html { redirect_to @tokimon, notice: 'Tokimon was successfully created.' }
@@ -54,6 +62,12 @@ class TokimonsController < ApplicationController
   def update
     respond_to do |format|
       if @tokimon.update(tokimon_params)
+        list = [@tokimon.weight, @tokimon.height, @tokimon.fly, @tokimon.fight, @tokimon.fire, @tokimon.water, @tokimon.electric, @tokimon.ice]
+        return redo_form("Name cannot be blank", true) if @tokimon.name.blank?
+        for i in 0...list.size
+          return redo_form("All attributes must be filled in", true) if list[i] == nil
+          return redo_form("One or more attributes are out of range", true) if (list[i]>100 && i>=2) || list[i] < 0
+        end
         format.html { redirect_to @tokimon, notice: 'Tokimon was successfully updated.' }
         format.json { render :show, status: :ok, location: @tokimon }
       else

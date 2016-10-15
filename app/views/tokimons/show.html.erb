@@ -58,7 +58,9 @@
 
 <p>
   <strong>Trainer:</strong>
-  <%= @tokimon.trainer == nil ? 'N/A' : @tokimon.trainer.name %>
+  <% if @tokimon.trainer == nil %> <%= "N/A (It's roaming around somewhere...)"  %>
+  <% else %> <%= link_to @tokimon.trainer.name, @tokimon.trainer %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_tokimon_path(@tokimon) %> |

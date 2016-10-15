@@ -23,7 +23,7 @@
   <% end %>
   <table>
     <thead>
-      <tr>
+      <tr id='trainersTokimons'>
         <th>Name</th>
         <th>Weight</th>
         <th>Height</th>
@@ -33,20 +33,26 @@
         <th>Water</th>
         <th>Electric</th>
         <th>Ice</th>
+        <th>Total</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
       <% @trainer.tokimons.each do |t| %>
+        <%fy=t.fly%><%ft=t.fight%><%fr=t.fire%><%wt=t.water%><%el=t.electric%><%ic=t.ice%>
         <tr>
           <td class='borderedTD'><%= t.name %></td>
-          <td><%= t.weight %></td>
+          <td ><%= t.weight %></td>
           <td><%= t.height %></td>
-          <td><%= t.fly %></td>
-          <td><%= t.fight %></td>
-          <td><%= t.fire %></td>
-          <td><%= t.water %></td>
-          <td><%= t.electric %></td>
-          <td><%= t.ice %></td>
+          <td style="background-color:rgb(<%=fy+110%>,<%=fy+110%>,<%=fy*3+110%>)"><%=fy%></td>
+          <td style="background-color:rgb(<%=ft*2+130%>,<%=ft+130%>,<%=ft+130%>)"><%=ft%></td>
+          <td style="background-color:rgb(<%=fr*2+100%>,<%=fr+130%>,<%=fr+100%>)"><%=fr%></td>
+          <td style="background-color:rgb(<%=wt+100%>,<%=wt+100%>,<%=wt*2+130%>)"><%=wt%></td>
+          <td style="background-color:rgb(<%=el*2+130%>,<%=el*2+130%>,<%=el+130%>)"><%=el%></td>
+          <td style="background-color:rgb(<%=ic+140%>,<%=ic+140%>,<%=ic*2+160%>)"><%=ic%></td>
+          <td style="background-color:rgb(<%=ft+fr+50%>,<%=fy+el+50%>,<%=wt+ic+50%>);font-weight:bold"><%=fy+ft+fr+wt+el+ic%></td>
+          <td><%= link_to 'Show', t %></td>
+          <td><%= link_to 'Edit', edit_tokimon_path(t) %></td>
         </tr>
       <% end %>
     </tbody>
